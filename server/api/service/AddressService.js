@@ -54,10 +54,10 @@ module.exports = {
         );
     },
 
-    deleteAddress: (data, callBack) => {
+    deleteAddress: (id, callBack) => {
         pool.query(
             `delete from address where id = ?`,
-                    [data.id],
+                    [id],
                     (error, results, fields) => {
                         if(error){
                             return callBack(error)

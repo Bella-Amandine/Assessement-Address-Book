@@ -1,12 +1,13 @@
 require('dotenv').config();
 import express from 'express';
 import bodyParser from 'body-parser';
-// import addressRouter from "./api/routes/index";
 
-const app = express();
+const cors = require('cors');
 const addressRouter = require('./api/routes/index')
 
+const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use("/api/address", addressRouter);

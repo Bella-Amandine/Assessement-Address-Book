@@ -51,8 +51,7 @@ module.exports = {
                 });
             }
             return res.json({
-                success: 1,
-                data: results
+                results
             });
         });
     },
@@ -69,12 +68,6 @@ module.exports = {
                 });
             }
 
-            if(!results) {
-                return res.status(500).json({
-                    message: "Failed to update address"
-                });
-            }
-
             return res.status(200).json({
                 success: 1,
                 message: "Address successfully updated"
@@ -83,8 +76,9 @@ module.exports = {
     },
 
     deleteAddress: (req, res) =>{
-        const data = req.body;
-        deleteAddress(data, (err, results) => {
+        // const data = req.body;
+        const id = req.params.id;
+        deleteAddress(id, (err, results) => {
             if(err){
                 console.log(err);
                 return res.status(500).json({
